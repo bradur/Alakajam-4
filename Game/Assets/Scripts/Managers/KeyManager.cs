@@ -11,7 +11,8 @@ public enum Action
     Quit,
     Restart,
     CloseMenu,
-    OpenMenu
+    OpenMenu,
+    Jump
 }
 
 [System.Serializable]
