@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager main;
 
+    [SerializeField]
+    private FollowCamera followerCamera;
+
     private bool gameOver = false;
     public bool GameIsOver { get { return gameOver; } }
 
@@ -23,6 +26,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void SetUpPlayer(PlayerCharacter pc)
+    {
+        followerCamera.SetTarget(pc.transform);
+    }
 
     public void GameOver()
     {
