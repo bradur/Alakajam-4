@@ -30,12 +30,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (KeyManager.main.GetKeyDown(Action.Jump))
-        {
-            Debug.Log(KeyManager.main.GetKeyDown(Action.Jump));
-            Debug.Log(string.Format("Grounded: {0}", grounded));
-        }
-
         if (grounded && KeyManager.main.GetKeyDown(Action.Jump))
         {
             allowJumping = true;

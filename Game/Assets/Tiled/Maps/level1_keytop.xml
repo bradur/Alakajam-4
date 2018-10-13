@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextobjectid="18">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextobjectid="19">
  <tileset firstgid="1" source="../Tilesets/tiles.tsx"/>
- <layer name="Background" width="16" height="9">
-  <properties>
-   <property name="type" value="background"/>
-  </properties>
-  <data encoding="csv">
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
-</data>
- </layer>
  <layer name="Wall" width="16" height="9">
   <properties>
    <property name="type" value="wall"/>
   </properties>
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,
-1,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,
+1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,
 1,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,
 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,
@@ -35,6 +19,6 @@
  </layer>
  <objectgroup name="Items">
   <object id="1" name="Key" type="key" gid="3" x="1280" y="256" width="128" height="128"/>
-  <object id="15" name="player" type="player" gid="4" x="256" y="1024" width="128" height="128"/>
+  <object id="18" name="player" type="player" gid="4" x="256" y="1024" width="128" height="128"/>
  </objectgroup>
 </map>

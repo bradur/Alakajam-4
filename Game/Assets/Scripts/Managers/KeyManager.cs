@@ -12,7 +12,8 @@ public enum Action
     Restart,
     CloseMenu,
     OpenMenu,
-    Jump
+    Jump,
+    CreateLoopArea
 }
 
 [System.Serializable]

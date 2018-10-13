@@ -37,6 +37,9 @@ public class LevelLoader : MonoBehaviour
     private TiledMap tiledMapPrefab;
 
     [SerializeField]
+    private MapGrid mapGrid;
+
+    [SerializeField]
     private List<TextAsset> levels;
 
     [SerializeField]
@@ -90,7 +93,7 @@ public class LevelLoader : MonoBehaviour
         //GameManager.main.SetPlayer(player);
 
         TiledMap tiledMap = Instantiate(tiledMapPrefab);
-        tiledMap.Init(map, this);
+        tiledMap.Init(map, this, mapGrid);
 
         //mapGrid.Activate();
 

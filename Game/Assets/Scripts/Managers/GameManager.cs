@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private FollowCamera followerCamera;
 
+    [SerializeField]
+    private FollowTargetSnapToGrid followerArea;
+
     private bool gameOver = false;
     public bool GameIsOver { get { return gameOver; } }
 
@@ -29,6 +32,12 @@ public class GameManager : MonoBehaviour {
     public void SetUpPlayer(PlayerCharacter pc)
     {
         followerCamera.SetTarget(pc.transform);
+        followerArea.SetTarget(pc.transform);
+    }
+
+    public void SetCameraTarget(Transform target)
+    {
+        followerCamera.SetTarget(target);
     }
 
     public void GameOver()

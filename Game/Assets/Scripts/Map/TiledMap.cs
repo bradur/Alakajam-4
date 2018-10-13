@@ -18,9 +18,13 @@ public class TiledMap : MonoBehaviour
     [SerializeField]
     private int tileSize = 128;
 
-    public void Init(TmxMap map, LevelLoader levelLoader)
+    private MapGrid mapGrid;
+
+    public void Init(TmxMap map, LevelLoader levelLoader, MapGrid mapGrid)
     {
         this.levelLoader = levelLoader;
+        this.mapGrid = mapGrid;
+        this.mapGrid.Initialize(map.Width, map.Height);
         DrawLayers(map);
         SpawnObjects(map);
     }
@@ -37,7 +41,7 @@ public class TiledMap : MonoBehaviour
                 {
                     if (tile.Gid != 0)
                     {
-                        SpawnMapObject(tile.X, mapHeight - tile.Y, mapObject);
+                        SpawnMapObject(tile.X, mapHeight - tile.Y - 1, mapObject);
                     }
                 }
             }
@@ -51,12 +55,12 @@ public class TiledMap : MonoBehaviour
         {
             foreach (TmxObject tmxObject in objectGroup.Objects)
             {
-                Debug.Log(string.Format("Found object {0} at {1}, {2}", tmxObject.Type, tmxObject.X, tmxObject.Y));
+                //Debug.Log(string.Format("Found object {0} at {1}, {2}", tmxObject.Type, tmxObject.X, tmxObject.Y));
                 MapObject mapObject = levelLoader.GetMapObject(tmxObject.Type);
                 if (mapObject != null)
                 {
-                    Debug.Log(string.Format("Found object {0}", mapObject.name));
-                    SpawnMapObject((int)tmxObject.X / tileSize, (mapHeight + 1) - (int)tmxObject.Y / tileSize, mapObject);
+                    //Debug.Log(string.Format("Found object {0}", mapObject.name));
+                    SpawnMapObject((int)tmxObject.X / tileSize, (mapHeight) - (int)tmxObject.Y / tileSize, mapObject);
                 }
             }
         }
@@ -69,6 +73,10 @@ public class TiledMap : MonoBehaviour
         spawnedObject.transform.position = new Vector3(x, y, 0f);
         spawnedObject.name = string.Format("[{0}, {1}] {2} #{3} ", x, y, mapObject.name, spawnedObjects);
         spawnedObjects += 1;
+        if (mapObject.name == "wall")
+        {
+            mapGrid.AddObject(spawnedObject, x, y);
+        }
     }
 
 }
