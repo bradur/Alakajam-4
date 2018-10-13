@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.023649674, g: 0.15766451, b: 0.2871746, a: 1}
+  m_AmbientSkyColor: {r: 0.13449708, g: 0.13449708, b: 0.13449708, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
@@ -270,7 +270,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.96
+  m_Intensity: 1.23
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   wallContainer: {fileID: 847270334}
   loopContainer: {fileID: 1981005324}
   originalColor: {r: 1, g: 1, b: 1, a: 1}
-  unreachableColor: {r: 0.509434, g: 0.021626905, b: 0.021626905, a: 0.6}
+  unreachableColor: {r: 0.6320754, g: 0, b: 0, a: 0.45490196}
 --- !u!1 &2036802281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1362,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 99b398a024bf84b499df64132adf8d33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1383,7 +1383,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7c5cc2ada178e774e839538d655e0e42, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.66774297, b: 1, a: 0.14509805}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
