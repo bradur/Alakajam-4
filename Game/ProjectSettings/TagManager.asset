@@ -6,6 +6,18 @@ TagManager:
   tags:
   - GameManager
   - KeyManager
+  - Key
+  - Door
+  - WallContainer
+  - KeyContainer
+  - DoorContainer
+  - EndContainer
+  - PlayerContainer
+  - End
+  - SecretEnd
+  - SecretEndContainer
+  - LevelLoader
+  - DestructibleWall
   layers:
   - Default
   - TransparentFX

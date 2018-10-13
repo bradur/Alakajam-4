@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dda1bbdf443ebd4daba78977b20e8ee, type: 3}
+  m_Name: MapObjectList
+  m_EditorClassIdentifier: 
+  objectName: MapObjectList
+  mapObjects:
+  - name: wall
+    prefab: {fileID: 1207941891684564, guid: dc3273efe66f7084b920a0a05dc81523, type: 2}
+    containerTag: WallContainer
+  - name: door
+    prefab: {fileID: 1279849276907118, guid: 82ae8048fb63a5045b13b493ae7fe6be, type: 2}
+    containerTag: DoorContainer
+  - name: player
+    prefab: {fileID: 1365049343031528, guid: 868e55f8519549e40a82fb576cf7fac2, type: 2}
+    containerTag: PlayerContainer
+  - name: end
+    prefab: {fileID: 1189846553339354, guid: 9ef758a307c339c4993216d501f640fe, type: 2}
+    containerTag: EndContainer
+  - name: secretend
+    prefab: {fileID: 1189846553339354, guid: 384452e37e86a9d48b942392d07f840c, type: 2}
+    containerTag: SecretEndContainer
+  - name: key
+    prefab: {fileID: 1322748909503962, guid: c41c5781236125843a3ef3a3129837bb, type: 2}
+    containerTag: Key
+  - name: destructiblewall
+    prefab: {fileID: 1610039191213042, guid: 6a8c65e742282964a82499be59e87a7a, type: 2}
+    containerTag: WallContainer

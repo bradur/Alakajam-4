@@ -29,6 +29,34 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    MapGrid mapGrid;
+
+    public void SetMapGrid(MapGrid mapGrid)
+    {
+        this.mapGrid = mapGrid;
+    }
+
+    LevelLoader levelLoader;
+    public void SetLevelLoader(LevelLoader levelLoader)
+    {
+        this.levelLoader = levelLoader;
+    }
+
+    public void LoadNextLevel()
+    {
+        levelLoader.OpenNextLevel();
+    }
+
+    public void LoadSecretLevel()
+    {
+        levelLoader.OpenSecretLevel();
+    }
+
+    public MapGrid GetMapGrid()
+    {
+        return mapGrid;
+    }
+
     public void SetUpPlayer(PlayerCharacter pc)
     {
         followerCamera.SetTarget(pc.transform);

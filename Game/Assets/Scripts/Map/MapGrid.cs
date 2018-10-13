@@ -20,6 +20,11 @@ public class MapGrid : MonoBehaviour {
         grid = new GameObject[width, height];
     }
 
+    public void Clear()
+    {
+        grid = null;
+    }
+
     public void AddObject(GameObject gridMember, int x, int y)
     {
         //Debug.Log(string.Format("GameObject {0}, {1} Grid[{2}, {3}]",gridMember.transform.position.x, gridMember.transform.position.y, x, y));

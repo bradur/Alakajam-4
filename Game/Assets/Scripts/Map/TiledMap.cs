@@ -69,11 +69,15 @@ public class TiledMap : MonoBehaviour
     private void SpawnMapObject(int x, int y, MapObject mapObject)
     {
         GameObject spawnedObject = Instantiate(mapObject.prefab);
-        spawnedObject.transform.parent = mapObject.container;
+        GameObject container = GameObject.FindGameObjectWithTag(mapObject.containerTag);
+        if (container != null)
+        {
+            spawnedObject.transform.parent = container.transform;
+        }
         spawnedObject.transform.position = new Vector3(x, y, 0f);
         spawnedObject.name = string.Format("[{0}, {1}] {2} #{3} ", x, y, mapObject.name, spawnedObjects);
         spawnedObjects += 1;
-        if (mapObject.name == "wall")
+        if (mapObject.name == "wall" || mapObject.name == "destructiblewall")
         {
             mapGrid.AddObject(spawnedObject, x, y);
         }

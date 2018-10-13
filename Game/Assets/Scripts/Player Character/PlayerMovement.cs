@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
     private float maxSpeed = 5f;
     [SerializeField]
     private float jumpForce = 1000f;
+    [SerializeField]
+    private float maxFallSpeed = 20f;
     // Update is called once per frame
     void Update()
     {
@@ -42,11 +44,17 @@ public class PlayerMovement : MonoBehaviour {
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
+
         if (h * rb2d.velocity.x < maxSpeed)
             rb2d.AddForce(Vector2.right * h * moveForce);
 
         if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
+
+        if (rb2d.velocity.y > maxFallSpeed)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, maxFallSpeed);
+        }
 
         if (h > 0 && !facingRight)
             Flip();

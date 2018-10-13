@@ -27,6 +27,19 @@ public class FollowTargetSnapToGrid : MonoBehaviour
     private int areaY;
 
     [SerializeField]
+    float end = 4.55f;
+    [SerializeField]
+    float start = -2.55f;
+    [SerializeField]
+    float endY = 4.5f;
+    [SerializeField]
+    float startY = -2.5f;
+
+    [SerializeField]
+    private float loopingButtonMinInterval = 1f;
+    private float loopingButtonTimer = 0f;
+
+    [SerializeField]
     private LoopAreaCreator loopAreaCreator;
 
     private void Start()
@@ -37,6 +50,38 @@ public class FollowTargetSnapToGrid : MonoBehaviour
     public void SetTarget(Transform target)
     {
         this.target = target;
+    }
+
+    private void FixedUpdate()
+    {
+        if (looping)
+        {
+            Vector3 newPos = target.transform.position;
+            float difX = newPos.x - transform.position.x;
+            float difY = newPos.y - transform.position.y;
+
+            if (difX > end || difX < start || difY > endY || difY < startY)
+            {
+                if (difX > end)
+                {
+                    newPos.x -= 7f;
+                }
+                else if (difX < start)
+                {
+                    newPos.x += 7f;
+                }
+                if (difY > endY)
+                {
+                    newPos.y -= 7f;
+                }
+                else if (difY < startY)
+                {
+                    newPos.y += 7f;
+                }
+                target.transform.position = newPos;
+            }
+            //Debug.Log();
+        }
     }
 
     private void Update()
@@ -63,30 +108,7 @@ public class FollowTargetSnapToGrid : MonoBehaviour
             }
             else if (looping)
             {
-                Vector3 newPos = target.transform.position;
-                float difX = newPos.x - transform.position.x;
-                float difY = newPos.y - transform.position.y;
-                if (difX > 4.5f || difX < -2.5f || difY > 4.5f || difY < -2.5f)
-                {
-                    if (difX > 4.5f)
-                    {
-                        newPos.x -= 7f;
-                    }
-                    else if (difX < -2.2f)
-                    {
-                        newPos.x += 7f;
-                    }
-                    if (difY > 4.5f)
-                    {
-                        newPos.y -= 7f;
-                    }
-                    else if (difY < -2.2f)
-                    {
-                        newPos.y += 7f;
-                    }
-                    target.transform.position = newPos;
-                }
-                //Debug.Log();
+                loopingButtonTimer += Time.deltaTime;
             }
 
         }
@@ -100,7 +122,15 @@ public class FollowTargetSnapToGrid : MonoBehaviour
                 areaX = (int)transform.position.x + 1;
                 areaY = (int)transform.position.y + 1;
                 loopAreaCreator.Initialize(areaX, areaY);
-                GameManager.main.SetCameraTarget(transform);
+                GameManager.main.SetCameraTarget(null);
+            }
+            else if (loopingButtonTimer > loopingButtonMinInterval)
+            {
+                loopingButtonTimer = 0f;
+                looping = false;
+                following = true;
+                loopAreaCreator.Clear();
+                GameManager.main.SetCameraTarget(target);
             }
         }
     }
