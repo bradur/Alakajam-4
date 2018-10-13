@@ -78,6 +78,7 @@ public class FollowTargetSnapToGrid : MonoBehaviour
                 {
                     newPos.y += 7f;
                 }
+                SoundManager.main.PlaySound(SoundType.Teleport);
                 target.transform.position = newPos;
             }
             //Debug.Log();

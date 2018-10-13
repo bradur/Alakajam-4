@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public enum SoundType
 {
-    None
+    None,
+    Teleport
 }
 
 public class SoundManager : MonoBehaviour {
@@ -31,13 +32,16 @@ public class SoundManager : MonoBehaviour {
 
     private void Start()
     {
-        if (musicMuted)
+        if (musicSource != null)
         {
-            musicSource.Pause();
-            //UIManager.main.ToggleMusic();
-        } else
-        {
-            musicSource.Play();
+            if (musicMuted)
+            {
+                musicSource.Pause();
+                //UIManager.main.ToggleMusic();
+            } else
+            {
+                musicSource.Play();
+            }
         }
     }
 
