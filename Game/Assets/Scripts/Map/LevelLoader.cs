@@ -151,6 +151,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Init(TextAsset mapFile)
     {
+        GameManager.main.ShowLevelText(inASecretLevel, nextLevel + 1);
         mapGrid.Clear();
         GameManager.main.SetMapGrid(mapGrid);
         GameManager.main.SetLevelLoader(this);

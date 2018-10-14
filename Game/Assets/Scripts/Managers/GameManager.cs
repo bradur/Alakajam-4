@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     private bool gameOver = false;
     public bool GameIsOver { get { return gameOver; } }
 
+    [SerializeField]
+    private UIManager uiManager;
+
     void Awake()
     {
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 0)
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour {
     public void SetLevelLoader(LevelLoader levelLoader)
     {
         this.levelLoader = levelLoader;
+    }
+
+    public void ShowLevelText(bool isSecretLevel, int levelNumber)
+    {
+        uiManager.ShowLevelText(isSecretLevel, levelNumber);
     }
 
     public void LoadNextLevel()

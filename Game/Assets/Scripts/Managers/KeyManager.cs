@@ -49,39 +49,48 @@ public class KeyManager : MonoBehaviour
 
     public bool GetKeyDown(Action action)
     {
-        if (Input.GetKeyDown(GetKeyCode(action)))
+        foreach (KeyCode keyCode in GetKeyCodes(action))
         {
-            if (debug)
+            if (Input.GetKeyDown(keyCode))
             {
-                Debug.Log(string.Format("Key {0} pressed down to perform {1}.", GetKeyString(action), action.ToString()));
+                if (debug)
+                {
+                    Debug.Log(string.Format("Key {0} pressed down to perform {1}.", GetKeyString(action), action.ToString()));
+                }
+                return true;
             }
-            return true;
         }
         return false;
     }
 
     public bool GetKeyUp(Action action)
     {
-        if (Input.GetKeyUp(GetKeyCode(action)))
+        foreach (KeyCode keyCode in GetKeyCodes(action))
         {
-            if (debug)
+            if (Input.GetKeyUp(keyCode))
             {
-                Debug.Log(string.Format("Key {0} let up to perform {1}.", GetKeyString(action), action.ToString()));
+                if (debug)
+                {
+                    Debug.Log(string.Format("Key {0} let up to perform {1}.", GetKeyString(action), action.ToString()));
+                }
+                return true;
             }
-            return true;
         }
         return false;
     }
 
     public bool GetKey(Action action)
     {
-        if (Input.GetKey(GetKeyCode(action)))
+        foreach (KeyCode keyCode in GetKeyCodes(action))
         {
-            if (debug)
+            if (Input.GetKey(keyCode))
             {
-                Debug.Log(string.Format("Key {0} held to perform {1}.", GetKeyString(action), action.ToString()));
+                if (debug)
+                {
+                    Debug.Log(string.Format("Key {0} held to perform {1}.", GetKeyString(action), action.ToString()));
+                }
+                return true;
             }
-            return true;
         }
         return false;
     }
@@ -97,6 +106,21 @@ public class KeyManager : MonoBehaviour
         }
         return KeyCode.None;
     }
+
+
+    public List<KeyCode> GetKeyCodes(Action action)
+    {
+        List<KeyCode> keyCodes = new List<KeyCode>();
+        foreach (GameKey gameKey in gameKeys)
+        {
+            if (gameKey.action == action)
+            {
+                keyCodes.Add(gameKey.key);
+            }
+        }
+        return keyCodes;
+    }
+
 
     public string GetKeyString(Action action)
     {

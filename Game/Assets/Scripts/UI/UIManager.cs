@@ -1,30 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
 
-    public static UIManager main;
 
-
-    void Awake()
-    {
-        if (GameObject.FindGameObjectsWithTag("UIManager").Length == 0)
-        {
-            main = this;
-            gameObject.tag = "UIManager";
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-
-/*
-    [SerializeField]
-    private UIDialogueManager uiDialogueManager;*/
 
     public void ShowMessage(string message)
     {
@@ -32,20 +14,39 @@ public class UIManager : MonoBehaviour
     }
 
 
-    /*[SerializeField]
-    private UIToggle uiMusic;
+    [SerializeField]
+    private Text levelText;
 
-    public void ToggleMusic()
+    [SerializeField]
+    private UIDialog uIDialog;
+
+    public void ShowLevelText(bool isSecretLevel, int levelNumber)
     {
-        uiMusic.ToggleMusic();
-    }*/
+        levelText.text = string.Format("{0} {1}", isSecretLevel ? "Secret level" : "Level", levelNumber);
+    }
 
     public void ToggleSfx()
     {
     }
 
+    public void ShowMenu(string message, string title)
+    {
+        uIDialog.Show(message, title);
+    }
+
+    public void ShowPauseMenu()
+    {
+        uIDialog.Show();
+    }
+
+    public void CloseMenu()
+    {
+        uIDialog.Hide();
+    }
+
     public void Restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
     bool menuOpen = false;
@@ -63,7 +64,7 @@ public class UIManager : MonoBehaviour
                 Restart();
             }
             if (menuOpen && KeyManager.main.GetKeyDown(Action.CloseMenu)) {
-                //CloseDialog();
+                CloseMenu();
                 menuOpen = false;
                 Time.timeScale = 1f;
             }
@@ -72,6 +73,7 @@ public class UIManager : MonoBehaviour
         {
             if (KeyManager.main.GetKeyDown(Action.OpenMenu))
             {
+                ShowPauseMenu();
                 menuOpen = true;
                 //ShowMessage("Game paused.\n\nPress Q to quit, R to restart. Esc to close this menu.");
                 Time.timeScale = 0f;

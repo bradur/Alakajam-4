@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour {
     public void ToggleSfx()
     {
         sfxMuted = !sfxMuted;
-        UIManager.main.ToggleSfx();
+        //UIManager.main.ToggleSfx();
     }
 
     public bool ToggleMusic()
