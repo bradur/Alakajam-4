@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private FollowTargetSnapToGrid followerArea;
 
+    [SerializeField]
+    private Material secretMaterial;
+    [SerializeField]
+    private Material defaultMaterial;
+
+    [SerializeField]
+    private MeshRenderer backgroundMesh;
+
     private bool gameOver = false;
     public bool GameIsOver { get { return gameOver; } }
 
@@ -39,10 +47,22 @@ public class GameManager : MonoBehaviour {
         this.mapGrid = mapGrid;
     }
 
+    public void SetScore(int score)
+    {
+        uiManager.SetScore(score);
+    }
+
     LevelLoader levelLoader;
     public void SetLevelLoader(LevelLoader levelLoader)
     {
         this.levelLoader = levelLoader;
+        if (levelLoader.InASecretLevel)
+        {
+            backgroundMesh.material = secretMaterial;
+        } else
+        {
+            backgroundMesh.material = defaultMaterial;
+        }
     }
 
     public void ShowLevelText(bool isSecretLevel, int levelNumber)

@@ -44,6 +44,12 @@ public class LevelLoader : MonoBehaviour
     }
 
     [SerializeField]
+    private AudioSource normalMusic;
+
+    [SerializeField]
+    private AudioSource secretMusic;
+
+    [SerializeField]
     private TiledMap tiledMapPrefab;
 
     [SerializeField]
@@ -60,8 +66,11 @@ public class LevelLoader : MonoBehaviour
     //private int currentLevel = 0;
     private int secretLevel = 0;
 
+    int score = 0;
+
     [SerializeField]
     private bool inASecretLevel = false;
+    public bool InASecretLevel { get { return inASecretLevel; } }
 
     void Start()
     {
@@ -104,6 +113,7 @@ public class LevelLoader : MonoBehaviour
         SetSecretLevel(nextLevel);
         if (nextLevel < levelList.Levels.Count)
         {
+            score += 1;
             inASecretLevel = false;
             //currentLevel = nextLevel;
             //Init(levelList.Levels[nextLevel]);
@@ -124,6 +134,7 @@ public class LevelLoader : MonoBehaviour
     {
         if (secretLevel < levelList.SecretLevels.Count)
         {
+            score += 2;
             Debug.Log(string.Format("Loading secret level: {0}", secretLevel));
             inASecretLevel = true;
             //Init(levelList.SecretLevels[nextLevel]);
@@ -153,14 +164,19 @@ public class LevelLoader : MonoBehaviour
 
     private void Init(TextAsset mapFile)
     {
+        GameManager.main.SetScore(score);
         GameManager.main.ShowLevelText(inASecretLevel, nextLevel + 1);
         if (inASecretLevel)
         {
             SoundManager.main.PlaySound(SoundType.SecretEnd);
+            secretMusic.volume = 0.8f;
+            normalMusic.volume = 0f;
         }
         else if (nextLevel > 0)
         {
             SoundManager.main.PlaySound(SoundType.End);
+            secretMusic.volume = 0f;
+            normalMusic.volume = 0.6f;
         }
         mapGrid.Clear();
         GameManager.main.SetMapGrid(mapGrid);

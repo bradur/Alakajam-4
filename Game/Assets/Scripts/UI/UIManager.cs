@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     private Text levelText;
 
     [SerializeField]
+    private Text scoreText;
+
+    [SerializeField]
     private UIDialog uIDialog;
 
     public void ShowLevelText(bool isSecretLevel, int levelNumber)
@@ -27,6 +30,11 @@ public class UIManager : MonoBehaviour
 
     public void ToggleSfx()
     {
+    }
+
+    public void SetScore(int score)
+    {
+        scoreText.text = score.ToString();
     }
 
     public void ShowMenu(string message, string title)
