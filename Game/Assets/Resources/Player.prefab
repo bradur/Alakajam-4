@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4461704930760698}
   - component: {fileID: 212797451215888170}
   m_Layer: 0
-  m_Name: leg
+  m_Name: leftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4650822495832424}
   - component: {fileID: 212032366447043532}
   m_Layer: 0
-  m_Name: leg
+  m_Name: rightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114747154868236174}
   - component: {fileID: 114928553630220510}
   - component: {fileID: 70216665744395288}
+  - component: {fileID: 95824862575191364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -143,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219389753276600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.077, y: -0.287, z: 0}
+  m_LocalPosition: {x: -0.077, y: -0.248, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4788764663622516}
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297399781507718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.056, y: -0.287, z: 0}
+  m_LocalPosition: {x: 0.073, y: -0.253, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4788764663622516}
@@ -169,7 +170,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365049343031528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.479, y: -0.296, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4176217442704666}
@@ -228,6 +229,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004677698, y: -0.05778086}
   m_Size: {x: 0.28390703, y: 0.8273381}
   m_Direction: 0
+--- !u!95 &95824862575191364
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1365049343031528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 635396b3093238143875cb9a2ab5dec9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114022163451164450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,6 +274,7 @@ MonoBehaviour:
   maxSpeed: 5
   jumpForce: 1200
   maxFallSpeed: 20
+  animator: {fileID: 95824862575191364}
 --- !u!114 &114928553630220510
 MonoBehaviour:
   m_ObjectHideFlags: 1

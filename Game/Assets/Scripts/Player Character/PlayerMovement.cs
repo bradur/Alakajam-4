@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpForce = 1000f;
     [SerializeField]
     private float maxFallSpeed = 20f;
+
+    [SerializeField]
+    private Animator animator;
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
         if (grounded && KeyManager.main.GetKeyDown(Action.Jump))
         {
             allowJumping = true;
+            animator.SetTrigger("Jump");
         }
     }
 
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
+        animator.SetBool("Walk", Mathf.Abs(h) > 0.01f);
 
         if (h * rb2d.velocity.x < maxSpeed)
             rb2d.AddForce(Vector2.right * h * moveForce);
