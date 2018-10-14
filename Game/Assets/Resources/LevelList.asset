@@ -14,11 +14,11 @@ MonoBehaviour:
   objectName: ScriptableObject
   levels:
   - {fileID: 4900000, guid: 7eb211abc76aefe4ea77ed8a4dfbe0ce, type: 3}
-  - {fileID: 4900000, guid: 3838be24e39a9914594103242258ab24, type: 3}
-  - {fileID: 4900000, guid: a96104de0c4d82b449781452d9bf6eea, type: 3}
-  - {fileID: 0}
-  - {fileID: 4900000, guid: 73a96c6f3b7347141a5c89bd26483de9, type: 3}
-  - {fileID: 4900000, guid: a96104de0c4d82b449781452d9bf6eea, type: 3}
+  - {fileID: 4900000, guid: 39281d17b46b3bb448857d8228c7da36, type: 3}
+  - {fileID: 4900000, guid: 0d84c8dc4d98f2d4190e82f2684d7d43, type: 3}
+  - {fileID: 4900000, guid: 38312c866fd44da4a817d7109cb611c5, type: 3}
+  - {fileID: 4900000, guid: e1a35f902a0050b4e904a68ac7b0a250, type: 3}
+  - {fileID: 4900000, guid: be2927cb359a0b14c8652c4a2ee69f21, type: 3}
   secretLevels:
   - {fileID: 4900000, guid: 73a96c6f3b7347141a5c89bd26483de9, type: 3}
   - {fileID: 4900000, guid: a96104de0c4d82b449781452d9bf6eea, type: 3}

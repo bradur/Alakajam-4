@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
             {
                 Application.Quit();
             }
-            if (KeyManager.main.GetKeyDown(Action.Restart))
+            if (menuOpen && KeyManager.main.GetKeyDown(Action.Restart))
             {
                 Restart();
             }
@@ -99,7 +99,7 @@ public class UIManager : MonoBehaviour
     public void ShowTheEndScreen()
     {
         wonGame = true;
-        //ShowMessage("The end.\n\nThanks for playing!\nPress Q to quit, R to restart.");
+        ShowMenu("Thanks for playing!\nPress <color=green>Q</color> to quit.", "The end");
         Time.timeScale = 0f;
     }
 }

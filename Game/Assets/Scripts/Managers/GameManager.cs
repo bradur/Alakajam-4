@@ -76,42 +76,17 @@ public class GameManager : MonoBehaviour {
         followerCamera.SetTarget(target);
     }
 
-    public void GameOver()
-    {
-        gameOver = true;
-        Time.timeScale = 0f;
-    }
 
     public void TheEnd()
     {
-        gameOver = true;
-        Time.timeScale = 0f;
+        uiManager.ShowTheEndScreen();
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
-    public void Restart()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
-    }
 
     void Start () {
     }
 
     void Update () {
-        if (gameOver)
-        {
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                Exit();
-            } else if (Input.GetKeyUp(KeyCode.R))
-            {
-                Restart();
-            }
-        }
+
     }
 }
