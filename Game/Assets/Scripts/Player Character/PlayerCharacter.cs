@@ -41,6 +41,7 @@ public class PlayerCharacter : MonoBehaviour
             DestructibleWall wall = collision.gameObject.GetComponent<DestructibleWall>();
             if (wall != null && wall.AttemptToDestroy(collision.relativeVelocity.y))
             {
+                SoundManager.main.PlaySound(SoundType.DestroyBlock);
                 Debug.Log("Paow!");
             }
             else

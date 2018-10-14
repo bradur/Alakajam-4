@@ -35,6 +35,7 @@ public class LevelLoader : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
             GameManager.main.SetLevelLoader(this);
+            SetSecretLevel(nextLevel);
         }
         else
         {
@@ -59,6 +60,7 @@ public class LevelLoader : MonoBehaviour
     //private int currentLevel = 0;
     private int secretLevel = 0;
 
+    [SerializeField]
     private bool inASecretLevel = false;
 
     void Start()
@@ -152,6 +154,14 @@ public class LevelLoader : MonoBehaviour
     private void Init(TextAsset mapFile)
     {
         GameManager.main.ShowLevelText(inASecretLevel, nextLevel + 1);
+        if (inASecretLevel)
+        {
+            SoundManager.main.PlaySound(SoundType.SecretEnd);
+        }
+        else if (nextLevel > 0)
+        {
+            SoundManager.main.PlaySound(SoundType.End);
+        }
         mapGrid.Clear();
         GameManager.main.SetMapGrid(mapGrid);
         GameManager.main.SetLevelLoader(this);

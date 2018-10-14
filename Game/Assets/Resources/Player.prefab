@@ -254,6 +254,7 @@ MonoBehaviour:
   moveForce: 365
   maxSpeed: 5
   jumpForce: 1200
+  maxFallSpeed: 20
 --- !u!114 &114928553630220510
 MonoBehaviour:
   m_ObjectHideFlags: 1

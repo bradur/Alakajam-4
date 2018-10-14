@@ -41,6 +41,7 @@ public class PlayerInventoryManager : MonoBehaviour
     {
         if (collision.tag == "Key")
         {
+            SoundManager.main.PlaySound(SoundType.Pickup);
             AddKey(collision.GetComponentInParent<CollectableKey>().Collect());
         }
     }
@@ -52,6 +53,7 @@ public class PlayerInventoryManager : MonoBehaviour
             Door door = collision.gameObject.GetComponent<Door>();
             if (UseKey(door.RequiredKeyType))
             {
+                SoundManager.main.PlaySound(SoundType.OpenDoor);
                 door.Open();
             }
 

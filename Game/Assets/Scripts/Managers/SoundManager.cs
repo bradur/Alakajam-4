@@ -6,7 +6,12 @@ using System.Collections.Generic;
 public enum SoundType
 {
     None,
-    Teleport
+    Teleport,
+    SecretEnd,
+    End,
+    OpenDoor,
+    Pickup,
+    DestroyBlock
 }
 
 public class SoundManager : MonoBehaviour {
@@ -53,7 +58,12 @@ public class SoundManager : MonoBehaviour {
             {
                 if (gameSound.soundType == soundType)
                 {
-                    gameSound.sound.Play();
+                    AudioSource soundToBePlayed = gameSound.sound;
+                    if (gameSound.sounds.Count > 0)
+                    {
+                        soundToBePlayed = gameSound.sounds[Random.Range(0, gameSound.sounds.Count)];
+                    }
+                    soundToBePlayed.Play();
                 }
             }
         }
@@ -86,4 +96,5 @@ public class GameSound : System.Object
 {
     public SoundType soundType;
     public AudioSource sound;
+    public List<AudioSource> sounds;
 }
