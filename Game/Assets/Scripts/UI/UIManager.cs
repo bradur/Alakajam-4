@@ -13,6 +13,29 @@ public class UIManager : MonoBehaviour
         //uiDialogueManager.ShowDialogue(message);
     }
 
+    private void Start()
+    {
+#if UNITY_EDITOR
+        debugMode = true;
+        Debug.Log("editor detected, debugMode ON");
+#else
+        debugHud.SetActive(false);
+#endif
+    }
+
+    [SerializeField]
+    private Text debugText;
+
+    private bool debugMode = false;
+
+    [SerializeField]
+    private Text lingerTimeText;
+
+    [SerializeField]
+    private GameObject debugHud;
+
+    [SerializeField]
+    private Text groundedText;
 
     [SerializeField]
     private Text levelText;
@@ -58,9 +81,28 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     bool menuOpen = false;
+
+    public void UpdateLingerTimer(float value)
+    {
+        if (debugMode)
+        {
+            lingerTimeText.text = value.ToString();
+        }
+    }
+
+    public void UpdateGrounded(bool grounded)
+    {
+        if (debugMode)
+        {
+            groundedText.text = string.Format("<color={0}>{1}</color>", grounded ? "green" : "red", grounded);
+        }
+    }
     void Update ()
     {
-
+        if (debugMode)
+        {
+            debugText.text = (Input.GetAxis("Horizontal")).ToString();
+        }
         if (gameOver || wonGame || menuOpen)
         {
             if (KeyManager.main.GetKeyDown(Action.Quit))

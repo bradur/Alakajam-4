@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-
     public static GameManager main;
 
     [SerializeField]
@@ -50,6 +49,16 @@ public class GameManager : MonoBehaviour {
     public void SetScore(int score)
     {
         uiManager.SetScore(score);
+    }
+
+    public void UpdateLingerTimer(float value)
+    {
+        uiManager.UpdateLingerTimer(value);
+    }
+
+    public void UpdateGrounded(bool grounded)
+    {
+        uiManager.UpdateGrounded(grounded);
     }
 
     LevelLoader levelLoader;
