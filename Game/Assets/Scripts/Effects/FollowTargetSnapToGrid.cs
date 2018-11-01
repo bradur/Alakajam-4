@@ -124,6 +124,7 @@ public class FollowTargetSnapToGrid : MonoBehaviour
                 areaY = (int)transform.position.y + 1;
                 loopAreaCreator.Initialize(areaX, areaY);
                 GameManager.main.SetCameraTarget(null);
+                GameManager.main.SetMusicLowPass(true);
             }
             else if (loopingButtonTimer > loopingButtonMinInterval)
             {
@@ -132,6 +133,7 @@ public class FollowTargetSnapToGrid : MonoBehaviour
                 following = true;
                 loopAreaCreator.Clear();
                 GameManager.main.SetCameraTarget(target);
+                GameManager.main.SetMusicLowPass(false);
             }
         }
     }

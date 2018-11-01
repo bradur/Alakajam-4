@@ -99,9 +99,8 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
-
-        animator.SetBool("Walk", Mathf.Abs(h) > 0.01f);
-
+        bool walking = Mathf.Abs(h) > 0.01f;
+        animator.SetBool("Walk", walking);
         if (h * rb2d.velocity.x < maxSpeed)
         {
             float speed = h;

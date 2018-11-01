@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour {
         this.mapGrid = mapGrid;
     }
 
+    public void SetMusicLowPass(bool PLMOn)
+    {
+        levelLoader.SetMusicLowPass(PLMOn);
+    }
+
     public void SetScore(int score)
     {
         uiManager.SetScore(score);

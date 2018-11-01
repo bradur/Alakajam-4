@@ -16,6 +16,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField]
     private bool followZ = false;
 
+    [SerializeField]
     private Transform target;
 
     private Vector3 newPosition;

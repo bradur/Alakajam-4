@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TiledSharp;
 using System.Xml.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 enum LayerType
 {
@@ -66,6 +67,12 @@ public class LevelLoader : MonoBehaviour
     //private int currentLevel = 0;
     private int secretLevel = 0;
 
+    [SerializeField]
+    private float musicLowPassPLMOn = 900;
+
+    [SerializeField]
+    private float musicLowPassPLMOff = 5000;
+
     int score = 0;
 
     [SerializeField]
@@ -123,6 +130,14 @@ public class LevelLoader : MonoBehaviour
         {
             GameManager.main.TheEnd();
         }
+    }
+
+    [SerializeField]
+    private AudioMixer audioMixer;
+
+    public void SetMusicLowPass(bool PLMOn)
+    {
+        audioMixer.SetFloat("MusicLowPass", PLMOn ? musicLowPassPLMOn : musicLowPassPLMOff);
     }
 
     public void SetSecretLevel(int secretLevel)
