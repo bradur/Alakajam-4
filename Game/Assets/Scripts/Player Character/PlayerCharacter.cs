@@ -4,11 +4,13 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Playables;
 
 public class PlayerCharacter : MonoBehaviour
 {
 
     private Rigidbody2D rb2d;
+
 
     void Start()
     {
@@ -25,12 +27,14 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (collision.tag == "End")
         {
-            GameManager.main.LoadNextLevel();
+            GameManager.main.StartLevelEndTimeLine();
+            //GameManager.main.LoadNextLevel();
         }
         if (collision.tag == "SecretEnd")
         {
-            Debug.Log("open secret level!");
-            GameManager.main.LoadSecretLevel();
+            GameManager.main.StartSecretLevelEndTimeLine();
+            //Debug.Log("open secret level!");
+            //GameManager.main.LoadSecretLevel();
         }
     }
 

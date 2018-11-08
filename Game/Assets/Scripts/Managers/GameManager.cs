@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private UIManager uiManager;
 
+    [SerializeField]
+    private CameraManager cameraManager;
+
     void Awake()
     {
         if (GameObject.FindGameObjectsWithTag("GameManager").Length == 0)
@@ -116,8 +119,29 @@ public class GameManager : MonoBehaviour {
         uiManager.ShowTheEndScreen();
     }
 
+    public void SwitchToEffectCamera ()
+    {
+        cameraManager.SwitchToEffect();
+    }
+
+    public void SwitchToPlayerCamera ()
+    {
+        cameraManager.SwitchToPlayer();
+    }
+
+
+    public void StartLevelEndTimeLine()
+    {
+        cameraManager.StartLevelEndTimeLine();
+    }
+
+    public void StartSecretLevelEndTimeLine()
+    {
+        cameraManager.StartSecretLevelEndTimeLine();
+    }
 
     void Start () {
+        
     }
 
     void Update () {

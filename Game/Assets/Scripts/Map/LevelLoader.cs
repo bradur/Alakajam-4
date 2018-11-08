@@ -95,6 +95,7 @@ public class LevelLoader : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        audioMixer.SetFloat("MusicLowPass", musicLowPassPLMOff);
         Debug.Log(string.Format("Scene loaded. In a secret level: {0}", inASecretLevel));
         if (!inASecretLevel)
         {
