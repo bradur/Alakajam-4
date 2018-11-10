@@ -13,7 +13,8 @@ public enum Action
     CloseMenu,
     OpenMenu,
     Jump,
-    CreateLoopArea
+    CreateLoopArea,
+    NextLevel
 }
 
 [System.Serializable]

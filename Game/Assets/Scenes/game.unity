@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6ab8bfecc91d947bb581c31750d170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 7
   materialsToFade:
   - material: {fileID: 2100000, guid: 0b29c2591bded69459a9d43f0ec554c1, type: 2}
     startValue: 1
@@ -1234,7 +1234,7 @@ MonoBehaviour:
     targetFieldName: _Color
     currentValue: 0
   - material: {fileID: 2100000, guid: 99b398a024bf84b499df64132adf8d33, type: 2}
-    startValue: 0.2039216
+    startValue: 1
     targetFieldName: _Color
     currentValue: 0
 --- !u!4 &447379237
@@ -1504,7 +1504,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cefb05a6f2d895340b893e99f6e76b59, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1642,7 +1642,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1660,7 +1660,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: bfd6cb8f6e5a7fc4f9a556ef8b11ec45, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 1
+  m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 0}
@@ -2090,6 +2090,8 @@ MonoBehaviour:
     action: 1
   - key: 119
     action: 5
+  - key: 32
+    action: 7
 --- !u!1 &837604561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3911,7 +3913,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f616a5ef04ff6534baa6264e30bfcdac, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3936,10 +3938,28 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 10
+    m_Time: 4
     m_CustomCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.00019073486
+        inSlope: 0.0049190703
+        outSlope: 0.0049190703
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.62445265
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 3.4270809
+        outSlope: 3.4270809
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.065106094
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4838,7 +4858,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7c5cc2ada178e774e839538d655e0e42, type: 3}
-  m_Color: {r: 0, g: 0.66774297, b: 1, a: 0.14509805}
+  m_Color: {r: 0, g: 0.66774297, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5033,7 +5053,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 764348400b4b4464cb20b45ef3bd7ac1, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

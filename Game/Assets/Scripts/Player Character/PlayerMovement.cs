@@ -53,86 +53,98 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (debugMode)
+        if (!stopped)
         {
-            GameManager.main.UpdateLingerTimer(lingerTimer);
-        }
-        grounded = lingerTimer > 0f;
-        if (!grounded)
-        {
-            foreach (Transform groundCheck in groundCheckPositions)
+            if (debugMode)
             {
-                if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
+                GameManager.main.UpdateLingerTimer(lingerTimer);
+            }
+            grounded = lingerTimer > 0f;
+            if (!grounded)
+            {
+                foreach (Transform groundCheck in groundCheckPositions)
                 {
+                    if (Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground")))
+                    {
 
-                    lingerTimer = groundedLingerTime;
-                    grounded = true;
-                    break;
+                        lingerTimer = groundedLingerTime;
+                        grounded = true;
+                        break;
+                    }
                 }
             }
-        }
-        else
-        {
-            lingerTimer -= Time.deltaTime;
-        }
+            else
+            {
+                lingerTimer -= Time.deltaTime;
+            }
 
-        if (debugMode)
-        {
-            GameManager.main.UpdateGrounded(grounded);
-        }
+            if (debugMode)
+            {
+                GameManager.main.UpdateGrounded(grounded);
+            }
 
-        if (grounded && KeyManager.main.GetKeyDown(Action.Jump))
-        {
-            allowJumping = true;
-            lingerTimer = -1f;
-            grounded = false;
-            animator.SetTrigger("Jump");
+            if (grounded && KeyManager.main.GetKeyDown(Action.Jump))
+            {
+                allowJumping = true;
+                lingerTimer = -1f;
+                grounded = false;
+                animator.SetTrigger("Jump");
+            }
+            else if (KeyManager.main.GetKeyDown(Action.Jump))
+            {
+                Debug.Log("Wasn't grounded");
+            }
         }
-        else if (KeyManager.main.GetKeyDown(Action.Jump))
-        {
-            Debug.Log("Wasn't grounded");
-        }
+    }
+
+    private bool stopped = false;
+    public void Stop()
+    {
+        stopped = true;
     }
 
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal");
-
-        //anim.SetFloat("Speed", Mathf.Abs(h));
-        bool walking = Mathf.Abs(h) > 0.01f;
-        animator.SetBool("Walk", walking);
-        if (h * rb2d.velocity.x < maxSpeed)
+        if (!stopped)
         {
-            float speed = h;
-            if (Mathf.Abs(h) > minHAxis)
+            float h = Input.GetAxis("Horizontal");
+
+            //anim.SetFloat("Speed", Mathf.Abs(h));
+            bool walking = Mathf.Abs(h) > 0.01f;
+            animator.SetBool("Walk", walking);
+            if (h * rb2d.velocity.x < maxSpeed)
             {
-                float factor = h > 0 ? 1 : -1;
-                speed = Mathf.Abs(h) > startingSpeed ? h : startingSpeed * factor;
-                Debug.Log("speed: " + speed);
+                float speed = h;
+                if (Mathf.Abs(h) > minHAxis)
+                {
+                    float factor = h > 0 ? 1 : -1;
+                    speed = Mathf.Abs(h) > startingSpeed ? h : startingSpeed * factor;
+                    Debug.Log("speed: " + speed);
+                }
+                rb2d.AddForce(Vector2.right * speed * moveForce, ForceMode2D.Impulse);
             }
-            rb2d.AddForce(Vector2.right * speed * moveForce, ForceMode2D.Impulse);
-        }
 
-        if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
-        {
-            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-        }
+            if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
+            {
+                rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
+            }
 
-        if (rb2d.velocity.y > maxFallSpeed)
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, maxFallSpeed);
-        }
+            if (rb2d.velocity.y > maxFallSpeed)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, maxFallSpeed);
+            }
 
-        if (h > 0 && !facingRight)
-            Flip();
-        else if (h < 0 && facingRight)
-            Flip();
+            if (h > 0 && !facingRight)
+                Flip();
+            else if (h < 0 && facingRight)
+                Flip();
 
-        if (allowJumping)
-        {
-            //anim.SetTrigger("Jump");
-            rb2d.AddForce(new Vector2(0f, jumpForce));
-            allowJumping = false;
+            if (allowJumping)
+            {
+                //anim.SetTrigger("Jump");
+                rb2d.AddForce(new Vector2(0f, jumpForce));
+                allowJumping = false;
+            }
         }
     }
 

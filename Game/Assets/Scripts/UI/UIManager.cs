@@ -103,7 +103,18 @@ public class UIManager : MonoBehaviour
         {
             debugText.text = (Input.GetAxis("Horizontal")).ToString();
         }
-        if (gameOver || wonGame || menuOpen)
+        if (nextLevelScreen)
+        {
+            if (KeyManager.main.GetKeyDown(Action.Restart))
+            {
+                Restart();
+            }
+            if (KeyManager.main.GetKeyDown(Action.NextLevel))
+            {
+                GameManager.main.LoadNextLevel();
+            }
+        }
+        else if (gameOver || wonGame || menuOpen)
         {
             if (KeyManager.main.GetKeyDown(Action.Quit))
             {
@@ -119,6 +130,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
+
         else
         {
             if (KeyManager.main.GetKeyDown(Action.OpenMenu))
@@ -151,5 +163,12 @@ public class UIManager : MonoBehaviour
         wonGame = true;
         ShowMenu("Thanks for playing!\nPress <color=green>Q</color> to quit.", "The end");
         Time.timeScale = 0f;
+    }
+
+    bool nextLevelScreen = false;
+    public void ShowNextLevelScreen()
+    {
+        nextLevelScreen = true;
+        ShowMenu("Well done!\nPress <color=green>R</color> to restart this level.\nPress <color=green>Space</color> to go to the next level.", "Level finished");
     }
 }

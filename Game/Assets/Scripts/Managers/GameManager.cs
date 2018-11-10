@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void StopPlayer()
+    {
+        playerMovement.Stop();
+    }
+
     public void ShowLevelText(bool isSecretLevel, int levelNumber)
     {
         uiManager.ShowLevelText(isSecretLevel, levelNumber);
@@ -102,8 +107,10 @@ public class GameManager : MonoBehaviour {
         return mapGrid;
     }
 
+    private PlayerMovement playerMovement;
     public void SetUpPlayer(PlayerCharacter pc)
     {
+        playerMovement = pc.GetComponent<PlayerMovement>();
         followerCamera.SetTarget(pc.transform);
         followerArea.SetTarget(pc.transform);
     }
@@ -113,6 +120,11 @@ public class GameManager : MonoBehaviour {
         followerCamera.SetTarget(target);
     }
 
+
+    public void ShowNextLevelScreen()
+    {
+        uiManager.ShowNextLevelScreen();
+    }
 
     public void TheEnd()
     {
