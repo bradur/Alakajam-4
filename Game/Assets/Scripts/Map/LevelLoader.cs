@@ -79,8 +79,16 @@ public class LevelLoader : MonoBehaviour
     private bool inASecretLevel = false;
     public bool InASecretLevel { get { return inASecretLevel; } }
 
+    [SerializeField]
+    private bool musicOn = true;
+
     void Start()
     {
+        if (musicOn)
+        {
+            normalMusic.Play();
+            secretMusic.Play();
+        }
         //OpenNextLevel();
     }
 
