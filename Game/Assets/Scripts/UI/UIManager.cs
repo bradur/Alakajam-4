@@ -114,6 +114,17 @@ public class UIManager : MonoBehaviour
                 GameManager.main.LoadNextLevel();
             }
         }
+        else if (secretNextLevelScreen)
+        {
+            if (KeyManager.main.GetKeyDown(Action.Restart))
+            {
+                Restart();
+            }
+            if (KeyManager.main.GetKeyDown(Action.NextLevel))
+            {
+                GameManager.main.LoadSecretLevel();
+            }
+        }
         else if (gameOver || wonGame || menuOpen)
         {
             if (KeyManager.main.GetKeyDown(Action.Quit))
@@ -170,5 +181,12 @@ public class UIManager : MonoBehaviour
     {
         nextLevelScreen = true;
         ShowMenu("Well done!\nPress <color=green>R</color> to restart this level.\nPress <color=green>Space</color> to go to the next level.", "Level finished");
+    }
+
+    bool secretNextLevelScreen = false;
+    public void ShowSecreNextLevelScreen()
+    {
+        secretNextLevelScreen = true;
+        ShowMenu("Wow<color=#7F1734>!</color>\nPress <color=green>R</color> to restart this level.\nPress <color=#7F1734>Space</color> to go to the <color=#7F1734>secret</color> level.", "Secret level found!");
     }
 }

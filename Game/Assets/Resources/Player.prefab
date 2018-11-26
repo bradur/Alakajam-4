@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4461704930760698}
   - component: {fileID: 212797451215888170}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: leftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650822495832424}
   - component: {fileID: 212032366447043532}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: rightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114928553630220510}
   - component: {fileID: 70216665744395288}
   - component: {fileID: 95824862575191364}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4771332713001982}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: GroundCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4154293284912596}
   - component: {fileID: 212917403763019574}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176217442704666}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: GroundCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4909642987860372}
   - component: {fileID: 212246442578246616}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4162271970954426}
   - component: {fileID: 108202061624760446}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4268143892276608}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -363,7 +363,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 9984
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
@@ -432,7 +432,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0b29c2591bded69459a9d43f0ec554c1, type: 2}
+  - {fileID: 2100000, guid: f300c1c5265e61e48b324756f5765a92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -478,7 +478,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0b29c2591bded69459a9d43f0ec554c1, type: 2}
+  - {fileID: 2100000, guid: f300c1c5265e61e48b324756f5765a92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -524,7 +524,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0b29c2591bded69459a9d43f0ec554c1, type: 2}
+  - {fileID: 2100000, guid: f300c1c5265e61e48b324756f5765a92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -570,7 +570,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0b29c2591bded69459a9d43f0ec554c1, type: 2}
+  - {fileID: 2100000, guid: f300c1c5265e61e48b324756f5765a92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -25,16 +25,26 @@ public class PlayerCharacter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "End")
+        if (collision.tag == "End" || collision.tag == "SecretEnd")
         {
-            GameManager.main.StartLevelEndTimeLine();
-            //GameManager.main.LoadNextLevel();
-        }
-        if (collision.tag == "SecretEnd")
-        {
-            GameManager.main.StartSecretLevelEndTimeLine();
-            //Debug.Log("open secret level!");
-            //GameManager.main.LoadSecretLevel();
+            Debug.Log(collision.tag);
+            if (collision.tag == "End")
+            {
+                GameManager.main.StartLevelEndTimeLine();
+                //GameManager.main.LoadNextLevel();
+            }
+            if (collision.tag == "SecretEnd")
+            {
+                GameManager.main.StartSecretLevelEndTimeLine();
+                //Debug.Log("open secret level!");
+                //GameManager.main.LoadSecretLevel();
+            }
+            Debug.Log(collision.gameObject);
+            EndStar endStar = collision.gameObject.GetComponentInParent<EndStar>();
+            if (endStar != null)
+            {
+                endStar.Die();
+            }
         }
     }
 

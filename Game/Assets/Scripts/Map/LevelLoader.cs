@@ -199,7 +199,6 @@ public class LevelLoader : MonoBehaviour
         }
         else if (nextLevel > 0)
         {
-            SoundManager.main.PlaySound(SoundType.End);
             secretMusic.volume = 0f;
             normalMusic.volume = 0.6f;
         }

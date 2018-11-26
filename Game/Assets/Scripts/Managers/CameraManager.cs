@@ -47,6 +47,8 @@ public class CameraManager : MonoBehaviour {
 
     public void StartSecretLevelEndTimeLine()
     {
-        secretLevelEndPlayable.Play(); ;
+        secretLevelEndPlayable.Play();
+        GameManager.main.ShowNextSecretLevelScreen();
+        GameManager.main.StopPlayer();
     }
 }

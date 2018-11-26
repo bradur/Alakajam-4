@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour {
 
@@ -43,6 +44,35 @@ public class GameManager : MonoBehaviour {
     }
 
     MapGrid mapGrid;
+
+
+    private Texture2D duplicateTexture(Texture2D source)
+    {
+        RenderTexture renderTex = RenderTexture.GetTemporary(
+                    source.width,
+                    source.height,
+                    0,
+                    RenderTextureFormat.Default,
+                    RenderTextureReadWrite.Linear);
+
+        Graphics.Blit(source, renderTex);
+        RenderTexture previous = RenderTexture.active;
+        RenderTexture.active = renderTex;
+        Texture2D readableText = new Texture2D(source.width, source.height);
+        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+        readableText.Apply();
+        RenderTexture.active = previous;
+        RenderTexture.ReleaseTemporary(renderTex);
+        return readableText;
+    }
+
+    public void SaveTextureAsPNG(Texture2D _texture)
+    {
+        Texture2D duplicate = duplicateTexture(_texture);
+        byte[] pngShot = duplicate.EncodeToPNG();
+        File.WriteAllBytes(Application.dataPath + "/" + duplicate.ToString() + "_" + Random.Range(0, 1024).ToString() + ".png", pngShot);
+    }
+
 
     public void SetMapGrid(MapGrid mapGrid)
     {
@@ -126,6 +156,11 @@ public class GameManager : MonoBehaviour {
         uiManager.ShowNextLevelScreen();
     }
 
+    public void ShowNextSecretLevelScreen()
+    {
+        uiManager.ShowSecreNextLevelScreen();
+    }
+
     public void TheEnd()
     {
         uiManager.ShowTheEndScreen();
@@ -144,11 +179,13 @@ public class GameManager : MonoBehaviour {
 
     public void StartLevelEndTimeLine()
     {
+        SoundManager.main.PlaySound(SoundType.End);
         cameraManager.StartLevelEndTimeLine();
     }
 
     public void StartSecretLevelEndTimeLine()
     {
+        SoundManager.main.PlaySound(SoundType.SecretEnd);
         cameraManager.StartSecretLevelEndTimeLine();
     }
 
